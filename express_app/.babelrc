@@ -1,0 +1,5 @@
+{
+  "presets": ["env", "stage-0"]
+}
+
+// environment, stage-0 allows us to run es6 code inside of our server.
