@@ -14,6 +14,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+//This is for proxies  (make sure to check security settings)
+app.set("trust proxy", "loopback");
+
 //This is for the images folder on path "/images"
 app.use("./images", express.static("images"));
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
@@ -141,5 +144,24 @@ middleware
 
 How to debug?
   DEBUG=express:* node index.js 
-  
-*/
+
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "debug": "DEBUG=express:* nodemon ./index.js --exec babel-node -e js"
+  },
+run with npm run debug
+
+What's a proxy?
+  It's another server that pushes endpoint calls or traffic to your application.
+
+Security Overview
+  Always keep up to date and use secured dependencies
+  Use Transport Layer Security (TLS) for sensitive data
+  Use Helmet's collection of security middleware
+  Use cookies securely (use express session middleware)
+
+
+Real Time Web with Express
+  https://socket.io/ 
+
+  */
