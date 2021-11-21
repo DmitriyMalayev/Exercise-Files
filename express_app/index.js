@@ -138,4 +138,8 @@ next()
 middleware
   In the context of node express server
   Functions that have access to the request and response object in our Express Application and can run their code there
+
+How to debug?
+  DEBUG=express:* node index.js 
+  
 */
