@@ -49,14 +49,30 @@ app.get("/images", (req, res) => {
   res.download("images/rocket.jpg");
 });
 
-app.delete("/delete", (req, res) => {
-  res.send(`A delete request with /item route on port ${PORT}`);
-});
-
 app.listen(PORT, () => {
   console.log(`Your server is running on port ${PORT}`);
   console.log(data);
 });
+
+//Chaining Example
+
+app.get("/item", (req, res) => {
+  res.send(`A get request with /item route on port ${PORT}`);
+});
+
+// Refactored Chaining
+
+app
+  .route("/item")
+  .get((req, res) => {
+    res.send(`A get request with /item route on port ${PORT}`);
+  })
+  .put((req, res) => {
+    res.send(`A put request with /newItem route on port ${PORT}`);
+  })
+  .delete((req, res) => {
+    res.send(`A delete request with /item route on port ${PORT}`);
+  });
 
 /*
 index.js is the entry point of our project
